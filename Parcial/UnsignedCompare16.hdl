@@ -1,0 +1,76 @@
+CHIP UnsignedCompare16 {
+    IN x[16], y[16];
+    OUT lt, eq, gt;
+
+    PARTS:
+    Xor(a=x[0], b=y[0], out=xor0);
+    Xor(a=x[1], b=y[1], out=xor1);
+    Xor(a=x[2], b=y[2], out=xor2);
+    Xor(a=x[3], b=y[3], out=xor3);
+    Xor(a=x[4], b=y[4], out=xor4);
+    Xor(a=x[5], b=y[5], out=xor5);
+    Xor(a=x[6], b=y[6], out=xor6);
+    Xor(a=x[7], b=y[7], out=xor7);
+    Xor(a=x[8], b=y[8], out=xor8);
+    Xor(a=x[9], b=y[9], out=xor9);
+    Xor(a=x[10], b=y[10], out=xor10);
+    Xor(a=x[11], b=y[11], out=xor11);
+    Xor(a=x[12], b=y[12], out=xor12);
+    Xor(a=x[13], b=y[13], out=xor13);
+    Xor(a=x[14], b=y[14], out=xor14);
+    Xor(a=x[15], b=y[15], out=xor15);
+
+    Not(in=xor0 , out=nxor0);
+    Not(in=xor1 , out=nxor1);
+    Not(in=xor2 , out=nxor2);
+    Not(in=xor3 , out=nxor3);
+    Not(in=xor4 , out=nxor4);
+    Not(in=xor5 , out=nxor5);
+    Not(in=xor6 , out=nxor6);
+    Not(in=xor7 , out=nxor7);
+    Not(in=xor8 , out=nxor8);
+    Not(in=xor9 , out=nxor9);
+    Not(in=xor10 , out=nxor10);
+    Not(in=xor11 , out=nxor11);
+    Not(in=xor12 , out=nxor12);
+    Not(in=xor13 , out=nxor13);
+    Not(in=xor14 , out=nxor14);
+    Not(in=xor15 , out=nxor15);
+
+    And(a=nxor0 , b=nxor1 , out=and0 );
+    And(a=nxor2 , b=nxor3 , out=and1 );
+    And(a=nxor4 , b=nxor5 , out=and2 );
+    And(a=nxor6 , b=nxor7 , out=and3 );
+    And(a=nxor8 , b=nxor9 , out=and4 );
+    And(a=nxor10 , b=nxor11 , out=and5 );
+    And(a=nxor12 , b=nxor13 , out=and6 );
+    And(a=nxor14 , b=nxor15 , out=and7 );
+    And(a=and0 , b=and1 , out=and8 );
+    And(a=and2 , b=and3 , out=and9 );
+    And(a=and4 , b=and5 , out=and10 );
+    And(a=and6 , b=and7 , out=and11 );
+    And(a=and8 , b=and9 , out=and12 );
+    And(a=and10 , b=and11 , out=and13 );
+    And(a=and12, b=and13 , out=and14 );
+    And(a=and13 , b=and14 , out=eq)
+
+    Not16(in=x, out=nx)
+
+    Add(a=y, 
+    b=nx[0]=true,
+    b=nx[1],
+    b=nx[2],
+    b=nx[3],
+    b=nx[4],
+    b=nx[5],
+    b=nx[6],
+    b=nx[7],
+    b=nx[8],
+    b=nx[9],
+    b=nx[10],
+    b=nx[11],
+    b=nx[12],
+    b=nx[13],
+    b=nx[14],
+    b=nx[15], out= );
+}
